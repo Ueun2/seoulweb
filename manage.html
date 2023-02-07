@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>디지털 성범죄</title>
+  <link rel="stylesheet" href="../css/common.css" />
+  <link rel="stylesheet" href="../css/manage.css" />
+  <script src="./header.js"></script>
+  <script src="./footer.js"></script>
+  <script src="./pagination.js"></script>
+  <script src="../js/style.js"></script>
+</head>
+<script>
+
+  if (!isAdmin) {
+    alert('접근 권한이 없습니다');
+    location.href = './';
+  }
+</script>
+
+<body>
+  <article class="manage-wrap wrapper">
+    <script>header()</script>
+    <section class="layout" id="manage">
+      <h1 class="title">상담사 관리</h1>
+      <div class="manage-contents">
+        <form name="manage-search" class="manage-search">
+          <div class="selection">
+            <button type="button">전체</button>
+            <input type="hidden" class="bor10 M-box-in" name="manage-type">
+            <ul class="option">
+              <li>전체</li>
+              <li>아이디</li>
+              <li>이름</li>
+            </ul>
+          </div>
+          <input type="text" class="list-search bor10 btn-off" placeholder="검색어를 입력해 주세요">
+        </form>
+        <button class="bor10 btn-off manager-add">추가</button>
+      </div>
+      <section class="manage-list bor10 L-box-up">
+        <h2 class="tit">
+          <span class="num">순번</span>
+          <span class="id">아이디</span>
+          <span class="name">이름</span>
+          <span class="belong">소속</span>
+          <span class="position">직위</span>
+          <span class="email">이메일</span>
+          <span class="phone">휴대전화</span>
+          <span class="enroll">등록일시</span>
+          <span class="final">최종 로그인</span>
+          <span class="distinc">구분</span>
+        </h2>
+        <div class="bor10 M-box-in list-con">
+        </div>
+      </section>
+    </section>
+    <script>pagination();</script>
+    <script>footer()</script>
+  </article>
+
+  <script>
+
+    const list = document.querySelector(".manage-list .list-con");
+    for (let i = 16; i > 0; i--) {
+      if (i < 17) {
+        list.innerHTML += `
+          <p>
+            <span class="num">${i}</span>
+            <span class="id">tester000${i}</span>
+            <span class="name">사원${i}</span>
+            <span class="belong">서울시청</span>
+            <span class="position">사원</span>
+            <span class="email">tester0001@gmail.com</span>
+            <span class="phone">010-1234-4567</span>
+            <span class="enroll">22.01.02 03:04</span>
+            <span class="final">22.01.02 03:04</span>
+            <span class="distinc"><button class="btn-off bor10 detail">상세</button><button class="btn-off bor10 del">삭제</button></span>
+            </p>
+      `;
+      }
+    }
+     // 셀렉트 구현
+     const select = document.querySelector(".selection");
+    const option = document.querySelectorAll(".selection .option li");
+    const tType = document.querySelector('input[name=manage-type]');
+    select.addEventListener("click", (e) => {
+      select.classList.toggle('active');
+      option.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          select.children[0].innerHTML = e.target.innerText;
+          tType.value = e.target.innerText;
+        })
+      });
+    });
+    const modal = document.querySelector("#modal");
+    // 닫기 버튼
+    // 상담사 추가
+    const mBtn = document.querySelector(".manager-add");
+    mBtn.addEventListener("click", () => {
+      //XMLHttpRequest 객체 생성
+      var xhr = new XMLHttpRequest();
+      //요청을 보낼 방식, 주소, 비동기여부 설정
+      xhr.open('GET', 'counselor-add.html', true);
+      //요청 전송
+      xhr.send(null);
+      //통신후 작업
+      xhr.onload = () => {
+        //통신 성공
+        if (xhr.status == 200) {
+          document.body.style.overflow='hidden';
+          modal.style.display = 'block';
+          modal.innerHTML = xhr.response;
+          // 셀렉트 구현
+          const select = document.querySelector(".selection");
+          const option = document.querySelectorAll(".selection .option li");
+          const email02 = document.querySelector('input[name=email02]');
+          select.addEventListener("click", (e) => {
+            select.classList.toggle('active');
+            option.forEach(btn => {
+              btn.addEventListener('click', (e) => {
+                if (e.target.innerText === '직접 입력') {
+                  select.style.display = "none";
+                  email02.setAttribute('type', 'text');
+                  email02.value = '';
+                  email02.focus();
+                } else {
+                  select.children[0].innerHTML = e.target.innerText;
+                  email02.value = e.target.innerText;
+                }
+              })
+            });
+          });
+          const esc = document.querySelector(".counselor-btn .esc");
+          esc.onclick = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow='unset';
+          }
+        } else {
+          //통신 실패
+          console.log("통신 실패");
+        }
+      }
+    })
+    // 상담사 디테일
+    const dBtn = document.querySelectorAll(".distinc .detail");
+    dBtn.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        //XMLHttpRequest 객체 생성
+        var xhr = new XMLHttpRequest();
+        //요청을 보낼 방식, 주소, 비동기여부 설정
+        xhr.open('GET', 'counselor-detail.html', true);
+        //요청 전송
+        xhr.send(null);
+        //통신후 작업
+        xhr.onload = () => {
+          //통신 성공
+          if (xhr.status == 200) {
+            document.body.style.overflow='hidden';
+            modal.style.display = 'block';
+            modal.innerHTML = xhr.response;
+            const esc = document.querySelector(".counselor-btn .esc");
+            esc.onclick = () => {
+              modal.style.display = 'none';
+              document.body.style.overflow='unset';
+            }
+          } else {
+            //통신 실패
+            console.log("통신 실패");
+          }
+
+        }
+      })
+    });
+  </script>
+</body>
+
+</html>

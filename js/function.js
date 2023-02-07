@@ -18,6 +18,6 @@ const getSiblings = elm => [...elm.parentNode.children].filter(node => node != e
 const logout = () => {
   sessionStorage.removeItem('isLogin');
   sessionStorage.removeItem('isAdmin');
-  location.href = '/';
+  location.href = './';
 };
 

@@ -31,8 +31,11 @@ document.addEventListener("DOMContentLoaded", function () {
   
   //헤더 메뉴버튼
   const path = window.location.pathname;
-  const menu = document.querySelector(`.hd-menu li a[href=".${path}"]`);
-  console.log(path);
+  const arr =path.split('/');
+  const last = arr.length;
+  const menu = document.querySelector(`.hd-menu li a[href="./${arr[last-1]}"]`);
+  
+  console.log(arr);
   if(menu){
     menu.parentNode.classList.add('menu-on');
     menu.parentNode.classList.remove('M-box-up');

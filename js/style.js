@@ -34,8 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
   const arr =path.split('/');
   const last = arr.length;
   const menu = document.querySelector(`.hd-menu li a[href="./${arr[last-1]}"]`);
-  
-  console.log(arr);
   if(menu){
     menu.parentNode.classList.add('menu-on');
     menu.parentNode.classList.remove('M-box-up');

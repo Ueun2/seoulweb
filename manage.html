@@ -115,9 +115,9 @@
           modal.style.display = 'block';
           modal.innerHTML = xhr.response;
           // 셀렉트 구현
-          const select = document.querySelector(".selection");
-          const option = document.querySelectorAll(".selection .option li");
-          const email02 = document.querySelector('input[name=email02]');
+          const select = document.querySelector(".counselor-add .selection");
+          const option = document.querySelectorAll(".counselor-add .selection .option li");
+          const email02 = document.querySelector('.counselor-add input[name=email02]');
           select.addEventListener("click", (e) => {
             select.classList.toggle('active');
             option.forEach(btn => {

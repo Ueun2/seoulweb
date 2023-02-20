@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
-  <link rel="stylesheet" href="./css/common.css" />
-  <link rel="stylesheet" href="./css/histroy.css">
+  <link rel="stylesheet" href="./css/common.min.css"/>
+  <link rel="stylesheet" href="./css/histroy.min.css">
   <script src="./js/style.js"></script>
   <script src="./header.js"></script>
   <script src="./pagination.js"></script>
@@ -24,7 +24,7 @@
         <form name="history-search" class="search-box">
           <input type="text" class="list-search bor10 btn-off" placeholder="검색어를 입력해 주세요">
         </form>
-        <p class="total-num">총 <span>123</span>건</p>
+        <p class="total-num">총 <span>30</span>건</p>
       </div>
       <h2><span class="num">순번</span><span class="type">검색 유형</span><span class="cont">내용</span><span
           class="social">SNS</span><span class="time">검색 일시</span><span class="dist">구분</span></h2>
@@ -126,7 +126,7 @@
     // 히스토리 탭
     const hisTab = document.querySelectorAll('.title span');
     const his = document.querySelectorAll('.history');
-   
+
     hisTab.forEach((tab, idx) => {
       tab.onclick = (e) => {
         getSiblings(e.target).forEach(t => {

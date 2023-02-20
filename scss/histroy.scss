@@ -111,9 +111,9 @@
     .currently-state {
       font-size: 14px;
       @extend %flex;
-      color: $middle;
       span {
         margin-left: 20px;
+        color: $normal;
       }
     }
     .cont {

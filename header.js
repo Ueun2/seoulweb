@@ -15,9 +15,9 @@ const header = () => {
   <nav>
     <ul class="hd-menu">
       <li class="M-box-up"><a href="./">Home</a></li>
-      <li class="M-box-up"><a href="./result.html">검색결과</a></li>
-      <li class="M-box-up"><a href="./trace.html">모니터링</a></li>
       <li class="M-box-up"><a href="./history.html">이력관리</a></li>
+      <li class="M-box-up"><a href="./trace.html">모니터링</a></li>
+      <li class="M-box-up"><a href="./result.html">검색결과</a></li>
       ${isAdmin ? '<li class="M-box-up"><a href="./manage.html">상담사 관리</a></li>' : ''}
     </ul>
     <ul class="login">

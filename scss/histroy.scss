@@ -120,12 +120,10 @@
         margin-bottom: 10px;
         padding: 16px 20px;
       }
-      .type {
-        padding-left: 10px;
+      .type,.cont {
         justify-content: start;
       }
       .cont {
-        justify-content: start;
         span {
           max-width: 50%;
           overflow: hidden;
@@ -140,7 +138,7 @@
     .type, .social {
       width: 12%;
       .reply {
-        margin: 0 6px;
+        margin: 0 6px 0 0;
       }
     }
     .cont {

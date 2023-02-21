@@ -6,6 +6,63 @@
 %bor4 {
   @include border(4px);
 }
+.dot-wrap {
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+}
+.dot, .dot::after, .dot::before {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: $logo-grey;
+  position: absolute;
+}
+.dot {
+  position: relative;
+  animation: dotBf 1500ms steps(1) infinite alternate;
+  margin-bottom: 4px;
+}
+.dot::after, .dot::before {
+  content: "";
+  position: absolute;
+  top: 0;
+}
+.dot::before {
+  right: -12px;
+}
+.dot::after {
+  right: 12px;
+  background-color: $blue;
+  animation: dotAf 1500ms ease-in-out 0s infinite alternate-reverse;
+}
+.dot-per {
+  font-size: .875rem;
+  line-height: 1;
+  color: $middle;
+}
+@keyframes dotAf {
+  0% {
+    right: -12px;
+  }
+  50% {
+    right: 0px;
+  }
+  100% {
+    right: 12px;
+  }
+}
+@keyframes dotBf {
+  0% {
+    background-color: $logo-grey;
+  }
+  50% {
+    background-color: transparent;
+  }
+  100% {
+    background-color: transparent;
+  }
+}
 #history {
   .title {
     @include flex(center);
@@ -27,9 +84,9 @@
       }
     }
   }
-  .history{
+  .history {
     display: none;
-    &.active{
+    &.active {
       display: block;
     }
   }
@@ -39,7 +96,8 @@
     align-items: end;
     margin-bottom: 20px;
   }
-  h2, .history-list li {
+  h2,
+  .history-list li {
     @extend %flex;
   }
   h2 {
@@ -49,32 +107,45 @@
     text-align: center;
     padding: 8px 20px;
     .dist {
-      width: 12.16%;
+      width: 11.52%;
     }
   }
   // 검색 이력
   .search-history {
+    P {
+      @include flex(center);
+    }
     .history-list {
       li {
         margin-bottom: 10px;
         padding: 16px 20px;
-        P {
-          @include flex(center);
+      }
+      .type {
+        padding-left: 10px;
+        justify-content: start;
+      }
+      .cont {
+        justify-content: start;
+        span {
+          max-width: 50%;
+          overflow: hidden;
+          white-space: nowrap;
+          text-overflow: ellipsis;
         }
       }
     }
     .num {
       width: 4%;
     }
-    .type,
-    .social {
-      width: 16%;
+    .type, .social {
+      width: 12%;
       .reply {
-        margin-right: 6px;
+        margin: 0 6px;
       }
     }
     .cont {
       flex: 1;
+      overflow: hidden;
     }
     .social {
       justify-content: center;
@@ -87,13 +158,17 @@
       }
     }
     .time {
-      width: 16.8%;
+      width: 14.4%;
+    }
+    .progress {
+      width: 8.8%;
     }
     .review {
       font-size: 0.875rem;
-      color: $orange;
-      margin-right: 40px;
-      padding: 4px 18px;
+      color: $middle;
+      margin-right: 30px;
+      padding: 4px 0;
+      width: 90px;
       @extend %bor4;
       &:active {
         @extend %btn-on;
@@ -103,8 +178,8 @@
   }
   // 추적 이력
   .trace-history {
-    .selection{
-      .option li{
+    .selection {
+      .option li {
         font-size: 1rem;
       }
     }
@@ -152,48 +227,48 @@
     .double-chk {
       width: 7.2%;
     }
-  }
-  .history-list {
-    >li {
-      padding: 10px 20px;
-      margin-bottom: 10px;
-    }
-    .cont {
-      @include flex(stretch) {
-        flex-wrap: wrap;
-        margin-left: 10px;
+    .history-list {
+      > li {
+        padding: 10px 20px;
+        margin-bottom: 10px;
       }
-      .img {
-        width: 78px;
-        height: 78px;
-      }
-      .sns {
-        right: 4px;
-        bottom: 4px;
-        width: 22px;
-      }
-      .text {
+      .cont {
         @include flex(stretch) {
-          padding: 0 10px;
-          flex-direction: column;
-          flex: 1;
-          p {
-            width: 100%;
-          }
+          flex-wrap: wrap;
+          margin-left: 10px;
         }
-        .detail {
-          .detail-time {
-            margin-left: 30px;
+        .img {
+          width: 78px;
+          height: 78px;
+        }
+        .sns {
+          right: 4px;
+          bottom: 4px;
+          width: 22px;
+        }
+        .text {
+          @include flex(stretch) {
+            padding: 0 10px;
+            flex-direction: column;
+            flex: 1;
+            p {
+              width: 100%;
+            }
+          }
+          .detail {
+            .detail-time {
+              margin-left: 30px;
+            }
           }
         }
       }
-    }
-    .memo {
-      height: 78px;
-      padding: 5px 10px;
-    }
-    .double-chk {
-      color: $orange;
+      .memo {
+        height: 78px;
+        padding: 5px 10px;
+      }
+      .double-chk {
+        color: $orange;
+      }
     }
   }
 }

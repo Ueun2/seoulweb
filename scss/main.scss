@@ -62,6 +62,7 @@
       border-radius: 50%;
       color: transparent;
       background: url(../img/common/photo-search.png) no-repeat center;
+      font-size: 0;
       &:active {
         @extend %btn-on;
       }
@@ -91,7 +92,7 @@
         margin: 0 4px;
         font-weight: 500;
       }
-      .img-type span{
+      .img-type span {
         color: $blue;
       }
     }

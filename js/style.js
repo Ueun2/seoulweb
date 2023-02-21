@@ -1,11 +1,11 @@
+
 // 헤더 유저(상세) 버튼 
 document.addEventListener("DOMContentLoaded", function () {
-  const login = document.querySelector(".user-btn");
+  const login = document.querySelector("header .user-btn");
   const user_detail = document.querySelector(".user-detail");
   if(login){
     login.addEventListener("click", function (e) {
       if (getComputedStyle(user_detail).display === 'none') {
-        console.log(e);
         this.classList.add('active');
         user_detail.style.display = 'block';
         user_detail.animate([
@@ -31,12 +31,16 @@ document.addEventListener("DOMContentLoaded", function () {
   
   //헤더 메뉴버튼
   const path = window.location.pathname;
-  const arr =path.split('/');
-  const last = arr.length;
-  const menu = document.querySelector(`.hd-menu li a[href="./${arr[last-1]}"]`);
+  const pathArr =path.split('/');
+  const last = pathArr.length;
+  const menu = document.querySelector(`.hd-menu li a[href="./${pathArr[last-1]}"]`);
+  const notice=document.querySelector('header .notice-btn');
   if(menu){
     menu.parentNode.classList.add('menu-on');
     menu.parentNode.classList.remove('M-box-up');
+  }
+  if(pathArr[last-1]=='notice.html'){
+    notice.classList.add('active');
   }
 
   // 리스트 타입

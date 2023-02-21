@@ -7,8 +7,7 @@
 * {
   box-sizing: border-box;
 }
-html,
-body {
+html, body {
   background-color: $main-bg;
   font: normal 400 16px/1.5 "Noto Sans KR", sans-serif;
   letter-spacing: -0.01em;
@@ -18,19 +17,31 @@ body {
 ::placeholder {
   color: $logo-grey;
 }
-input,
-select,
-button,
-textarea {
+input, select, button, textarea {
   background-color: $main-bg;
   outline: none;
   resize: none;
 }
-input[type="checkbox"],
-input[type="radio"] {
+input[type="checkbox"], input[type="radio"] {
   appearance: none;
+  vertical-align: middle;
+  margin-top: -2px;
+  margin-right: 4px;
 }
-input[type="file"]{
+input[type="radio"] {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  @include convex(3, 3, 6);
+  background: url(../img/common/radio-off.png)no-repeat center;
+}
+input[type="radio"]:checked {
+  background: url(../img/common/radio-on.png)no-repeat center;
+  background-color: $orange;
+  box-shadow: -3px -3px 9px rgba(255, 255, 255, 0.9), inset -2px -2px 3px rgba(255, 255, 255, 0.3),
+  inset 2px 2px 3px rgba(0, 0, 0, 0.24);
+}
+input[type="file"] {
   visibility: hidden;
   width: 0;
   height: 0;
@@ -90,7 +101,6 @@ button {
     }
   }
 }
-
 [readonly] {
   color: $black;
   background-color: rgba($color: $blue, $alpha: 0.07);
@@ -279,9 +289,14 @@ header {
   }
   .login-btn.active {
     background-color: $blue;
-    background-image: url(../img/common/user-on.png);
     box-shadow: -3px -3px 9px rgba(255, 255, 255, 0.9), inset -3px -3px 6px rgba(255, 255, 255, 0.4),
       inset 3px 3px 6px rgba(0, 0, 0, 0.4);
+  }
+  .user-btn.active {
+    background-image: url(../img/common/user-on.png);
+  }
+  .notice-btn.active {
+    background-image: url(../img/common/bell-on.png);
   }
   .user-btn {
     display: flex;
@@ -333,7 +348,6 @@ header {
     }
   }
 }
-
 /* footer */
 footer {
   .copy {
@@ -382,7 +396,6 @@ footer {
     }
   }
 }
-
 .sns {
   position: absolute;
 }
@@ -513,6 +526,7 @@ footer {
   height: 22px;
   border-radius: 11px;
   background: url(../img/common/delet.png) no-repeat center;
+  background-color: $main-bg;
   &:active {
     @extend %btn-on;
   }

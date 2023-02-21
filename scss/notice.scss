@@ -1,0 +1,48 @@
+@charset "utf-8";
+@import "mixin";
+.notice-wrap {
+  .unity-setting, form, .notice-contents, h2 {
+    @include flex()
+  }
+  .selection {
+    width: 90px;
+    height: 40px;
+    margin-left: 20px;
+    button {
+      background-size: 16px;
+      background-position: 90% center;
+    }
+  }
+  .notice-contents {
+    justify-content: space-between;
+    font-size: .875rem;
+    margin-top: 60px;
+    margin-bottom: 20px;
+    .auto-trace {
+      height: 40px;
+      padding: 0 30px;
+      background-color: $modal-bg;
+      color: #fff;
+      &:active {
+        box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.6), inset -3px -3px 5px rgba($color: #fff, $alpha: 0.4),
+          inset 3px 3px 5px rgba(25, 72, 148, 0.32);
+      }
+    }
+  }
+  .view-type {
+    label {
+      margin-left: 20px;
+      &:first-of-type {
+        margin-left: 60px;
+      }
+    }
+  }
+  h2 {
+    justify-content: space-between;
+    > span {
+      font-size: .9375rem;
+      color: $blue;
+      font-weight: 700;
+    }
+  }
+}

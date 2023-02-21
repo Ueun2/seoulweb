@@ -21,7 +21,7 @@ const header = () => {
       ${isAdmin ? '<li class="M-box-up"><a href="./manage.html">상담사 관리</a></li>' : ''}
     </ul>
     <ul class="login">
-      <li class="M-box-up bor10 login-btn "><a href="#">알람</a></li>
+      <li class="M-box-up bor10 login-btn notice-btn"><a href="./notice.html">알람</a></li>
       <li class="M-box-up bor10 login-btn user-btn">사용자
         <div class="user-detail bor10" >
           <p class="user-name"><strong>홍길동 님</strong>(usertest0001)</p>

@@ -44,9 +44,11 @@
       </div>
       <h2>
         <span class="time">추적 일시</span><span class="img">이미지</span> <span class="type">유형</span> <span
-          class="unity">일치율</span><span class="cont">검색 내용</span><span class="social">SNS</span><span class="url">url</span>
+          class="unity">일치율</span><span class="cont">검색 내용</span><span class="social">SNS</span><span
+          class="url">url</span>
       </h2>
       <ul class="notice-list list-content ">
+
       </ul>
     </seciton>
     <script>
@@ -59,7 +61,7 @@
     const select = document.querySelector(".selection");
     let ops = '';
     for (let i = 50; i <= 100; i += 5) {
-      ops += `<li value=${i}>${i}</li>`
+      ops += `<li class='unity_num' value=${i}>${i}</li>`
     }
     select.querySelector('.option').innerHTML = ops;
     const option = document.querySelectorAll(".selection .option li");
@@ -73,6 +75,58 @@
         })
       });
     });
+    const noticeList = document.querySelector(".notice-list");
+    for (let i = 32; i > 0; i--) {
+      noticeList.innerHTML += `
+      <li class="btn-off bor10">
+          <p class="time"><span class="date">2022.12.12</span> <br> <span class="hour">12:44:01</span></p>
+          <p class="img"><img src="./img/replace/man.png" alt=""></p>
+          <p class="type"><span>모니터링</span><span>(키워드)</span></p>
+          <p class="unity">99%</p>
+          <p class="cont"><span class="con">엄훠나 세솽에 이런 일이 다 있고 참 이상하네요 정말 정말 정말 왜 이렇게 이상할까요?????</span></p>
+          <img src="./img/common/sns/face.png" alt="" class="social">
+          <p class="url"><a href="#">https//:wwwgooglecomsearchq=%EC%9D%B8%EC%8A%A4%ED%83%80oq=%EC%9D%B8%EC%8A%A4%ED%83%80&aASDFsdfas...</a></p>
+          <button class="trace-add btn-off">추가</button>
+        </li>
+        `;
+    }
+    function autoTrace(val){
+      let word=val.querySelector("input").value;
+      document.querySelector('.keyword-box>div').innerHTML+=
+        `<p class="word-list">${word}<span type="button" class="delete" onclick='aTDelete(this);'>삭제</span></p>`;
+      val.querySelector("input").value='';
+    }
+    function aTDelete(del){
+      del.parentNode.remove();
+    }
+    // 키워드
+    const autoKey = document.querySelector(".auto-trace");
+    autoKey.addEventListener("click", () => {
+      //XMLHttpRequest 객체 생성
+      var xhr = new XMLHttpRequest();
+      //요청을 보낼 방식, 주소, 비동기여부 설정
+      xhr.open('GET', 'keyword.html', true);
+      //요청 전송
+      xhr.send(null);
+      //통신후 작업
+      xhr.onload = () => {
+        //통신 성공
+        if (xhr.status == 200) {
+          document.body.style.overflow = 'hidden';
+          modal.style.display = 'flex';
+          modal.innerHTML = xhr.response;
+
+          const esc = document.querySelector(".esc-btn");
+          esc.onclick = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = 'unset';
+          }
+        } else {
+          //통신 실패
+          console.log("통신 실패");
+        }
+      }
+    })
   </script>
 </body>
 

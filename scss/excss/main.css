@@ -26,6 +26,8 @@
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
+  width: 0;
+  margin: 0;
 }
 .search .sns-check > label {
   cursor: pointer;

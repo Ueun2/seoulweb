@@ -10,6 +10,8 @@
   .sns-check {
     input[type=checkbox]{
       appearance: none;
+      width: 0;
+      margin: 0;
     }
     display: flex;
     justify-content: center;

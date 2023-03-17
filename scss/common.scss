@@ -22,11 +22,44 @@ input, select, button, textarea {
   outline: none;
   resize: none;
 }
+label:has(input[type=checkbox], input[type=radio]) {
+  color: $middle;
+}
+label:has(input[type=checkbox]:checked, input[type=radio]:checked) {
+  color: $black;
+}
+input[type=checkbox] {
+  background: url(../img/common/check.png) no-repeat center;
+  &:checked {
+    background: url(../img/common/check-on.png) no-repeat center, $orange;
+  }
+}
+input[type="radio"] {
+  background: url(../img/common/radio-off.png)no-repeat center;
+  &:checked {
+    background: url(../img/common/radio-on.png)no-repeat center, $orange;
+  }
+}
 input[type="checkbox"], input[type="radio"] {
   appearance: none;
   vertical-align: middle;
   margin-top: -2px;
   margin-right: 4px;
+}
+input[type=checkbox], input[type=radio] {
+  width: 16px;
+  height: 16px;
+  border-radius: 2px;
+  box-shadow: -3px -3px 6px #FFFFFF, 3px 3px 6px rgba(25, 72, 148, 0.2);
+  &:checked {
+    box-shadow: inset -2px -2px 3px rgba(255, 255, 255, 0.3), inset 2px 2px 3px rgba(0, 0, 0, 0.24);
+  }
+}
+input[type="radio"] {
+  background: url(../img/common/radio-off.png)no-repeat center;
+  &:checked {
+    background: url(../img/common/radio-on.png)no-repeat center, $orange;
+  }
 }
 input[type="file"] {
   visibility: hidden;

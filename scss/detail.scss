@@ -58,10 +58,9 @@
       &:last-of-type {
         margin-right: 0;
       }
-      video,canvas{
+      video, canvas {
         @extend %img-pose;
       }
-      
     }
   }
   .detail-content {
@@ -72,15 +71,24 @@
     .img-info {
       width: 74.78991596638655%;
       padding: 10px 0;
-      p {
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
+      div {
+        display: flex;
         margin-bottom: 4px;
-        span {
-          display: inline-block;
+        h3 {
           width: 13%;
           font-weight: 500;
+        }
+        p {
+          width: 87%;
+          white-space: nowrap;
+          text-overflow: ellipsis;
+          overflow: hidden;
+          span {
+            margin: 0 5px;
+            &:first-child{
+              margin-left:0 ;
+            }
+          }
         }
         &:last-of-type {
           margin-bottom: 0;

@@ -20,24 +20,37 @@
 
   <article class="result-wrap wrapper">
     <script>header();</script>
-    <div class="re-search M-box-up bor10">
+    <!-- 수정부분 -->
+    <div class="re-search M-box-up bor10 layout">
       <form name="re-search" action="javascript://" onsubmit="reSearch()">
-        <div class="search-bar bor10">
-          <input type="text" placeholder="검색어를 입력하세요">
-          <button type="button" class="btn-off img-btn" tooltip="Search by image or audio/video">이미지로 검색</button>
-          <div class="img-search bor10">
-            <button type="button" class="esc">닫기</button>
-            <label for="file" class="file-drop bor10">
-              <p class="event"><span>Click</span> and <span>Drop</span> </p>
-              <p class="img-type">Your <span>Image</span> or <span>Audio</span> or <span>Video</span> here.
-              </p>
-            </label>
-            <input type="file" id="file">
-            <div class="file-box">
-              <input class="file-name " value="" placeholder="첨부 파일" readonly>
-              <button class="file-btn btn-off">검색</button>
-            </div>
+        <section class="video-chk">
+          <h2>일치율 높은순</h2>
+          <div class="chk-box">
+            <label><input type="checkbox" name="video" value=1 class="W" checked>전체</label>
+            <label><input type="checkbox" name="video" value=0>이미지</label>
+            <label><input type="checkbox" name="video" value=0>오디오</label>
+            <label><input type="checkbox" name="video" value=0>텍스트</label>
           </div>
+        </section>
+        <section class="sort-chk">
+          <h2>분류</h2>
+          <div class="chk-box">
+            <label><input type="checkbox" name="sort" value=1 class="W" checked>전체</label>
+            <label><input type="checkbox" name="sort" value=0 id="equal">일치율</label>
+            <label><input type="checkbox" name="sort" value=0>처리중</label>
+            <label><input type="checkbox" name="sort" value=0>대기중</label>
+            <label><input type="checkbox" name="sort" value=0>SKIP</label>
+          </div>
+        </section>
+        <section class="pri-chk">
+          <h2>우선순위</h2>
+          <div class="chk-box">
+            <label><input type="radio" name="priority" value=1 checked>일치율 높은순</label>
+            <label><input type="radio" name="priority" value=0>일치율 낮은순</label>
+          </div>
+        </section>
+        <div class="search-bar bor10 bor10 btn-off">
+          <input type="text" placeholder="검색어를 입력하세요">
         </div>
       </form>
     </div>
@@ -48,7 +61,7 @@
           <div class="search-tab">
             <div class="tab  on">
               <img src="./img/replace/man.png" alt="">
-              <p>"<span>sitting</span>"에 대한 검색 결과 입니다.</p>
+              <p>"<span>고딩</span>"에 대한 검색 결과 입니다.</p>
             </div>
             <img src="./img/result/double-right.png" alt="" class="next research">
           </div>
@@ -103,6 +116,8 @@
         `;
       }
     }
+    // 체크박스
+
     // 검색 디테일
     const imgBtn = document.querySelectorAll(".img-box");
     const modal = document.querySelector("#modal")
@@ -134,13 +149,12 @@
         }
       })
     });
-
+    // 재검색
     const reSearch = () => {
       const tabW = document.querySelector('.search-tab');
       const text = `
       <div class="tab research">
-              <video src="./img/replace/replacevideo.mp4"></video>
-              <p>"<span>sitting</span>"에 대한 검색 결과 입니다.</p>
+              <p>검색어</p>
             </div>
       `;
       tabW.insertAdjacentHTML("beforeend", text);
@@ -153,42 +167,60 @@
       tab[0].onclick = function () {
         this.classList.add('on');
         tab[1].classList.remove('on');
-        document.querySelector('.re-search').style.display = 'block';
+        document.querySelector('.search-bar').style.display = 'block';
       }
       tab[1].onclick = function () {
         this.classList.add('on');
         tab[0].classList.remove('on');
-        document.querySelector('.re-search').style.display = 'none';
+        document.querySelector('.search-bar').style.display = 'none';
       }
       tab[1].click();
     }
-
-    // 이미지 버튼
-    const img_Btn = document.querySelector(".img-btn");
-    img_Btn.addEventListener("click", () => {
-      document.querySelector(".img-search").style.display = "block";
-    });
-    const imgEsc = document.querySelector(".img-search .esc");
-    imgEsc.onclick = () => {
-      document.querySelector(".img-search").style.display = "none";
-    }
-    // 이미지 드롭
-    const dropImg = document.querySelector(".file-drop");
-    dropImg.ondragover = (e) => {
-      e.preventDefault();
-    }
-    dropImg.addEventListener('drop', function (event) {
-      event.preventDefault();
-      const file = event.dataTransfer.files;
-      console.log(file.mozFullPath);
-      document.querySelector(".file-name").value = file[0].name;
-    });
-    // 파일 업로드 인식
-    const fileUp = document.querySelector("#file");
-    fileUp.onchange = function () {
-      document.querySelector(".file-name").value = this.files[0].name;
-    }
     view_type();
+
+    // ----------체크박스------------
+    /* 검색파일이 video일경우*/
+    const video = true;//임시값
+    if (video) {
+      document.querySelector('.video-chk').style.display = 'block';
+    } else {
+      document.querySelector('.video-chk').style.display = 'none';
+    }
+
+    // check된 값1로 넘기기 
+    const chk = document.querySelectorAll('.chk-box input[type=checkbox]');
+    for (let i = 0; i < chk.length; i++) {
+      chk[i].addEventListener('change', function () {
+        this.value ^= 1;
+        // 일치율선택시 우선순위 나오기
+        if (this.id === 'equal') {
+          if (this.checked) {
+            document.querySelector('.pri-chk').style.display = 'block';
+          } else {
+            document.querySelector('.pri-chk').style.display = 'none';
+          }
+        }
+        // 다른체크시 전체 체크값해제
+        if (this.className !== 'W') {
+          [...chk].filter(check=>check.className==='W'&& check.name===this.name).forEach(e=>{
+            if(e.checked){
+              e.checked = false;
+              e.value ^= 1;
+            }
+          })
+        }
+        // 전체 누르면 다른값 체크해제
+        if (this.className==='W') {
+          [...chk].filter(vi => (vi.className !== this.className && vi.name ===this.name)).forEach(e => {
+            if (e.checked) {
+              e.checked = false;
+              e.value ^= 1;
+            }
+          })
+        }
+      })
+    }
+
   </script>
 
 </body>

@@ -8,6 +8,9 @@
 /* 검색 */
 .search {
   .sns-check {
+    input[type=checkbox]{
+      appearance: none;
+    }
     display: flex;
     justify-content: center;
     > label {

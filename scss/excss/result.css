@@ -175,7 +175,6 @@ input[type=radio]:checked {
           align-items: center;
 }
 #result .search-tab .tab {
-  cursor: pointer;
   color: #1B1E20;
 }
 #result .search-tab .tab p {
@@ -183,6 +182,7 @@ input[type=radio]:checked {
 }
 #result .search-tab .tab .search-img {
   font-size: 0;
+  cursor: pointer;
 }
 #result .search-tab .tab img,
 #result .search-tab .tab video {
@@ -244,7 +244,11 @@ input[type=radio]:checked {
   grid-template-rows: repeat(5, auto);
   padding: 14px 10px;
   margin-bottom: 30px;
+  margin-right: 30px;
   position: relative;
+}
+#result .list.active:nth-of-type(4n) {
+  margin-right: 0;
 }
 #result .list.active .img-box {
   width: 100%;

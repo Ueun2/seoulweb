@@ -99,10 +99,10 @@
     }
     //추적 이력
     const traceList = document.querySelector(".history-trace-list");
-    for (let i = 32; i > 0; i--) {
+    for (let i = 16; i > 0; i--) {
       traceList.innerHTML += `
       <li class="btn-off bor10">
-          <p class="num">${i}</p>
+          <p class="num">${2*i}</p>
           <div class="cont">
             <div class="img-box">
               <div class="img">
@@ -130,6 +130,35 @@
           </div>
           <button class="btn-off double-chk">2차 검증</button>
         </li>
+        <li class="btn-off bor10">
+          <p class="num">${2*i-1}</p>
+          <div class="cont">
+            <div class="img-box">
+              <div class="img">
+                <img src="./img/replace/man.png" alt="">
+              </div>
+              <img src="./img/common/sns/google.png" alt="" class="sns">
+            </div>
+            <div class="text">
+              <p class="url">url이 들어갑니다url이 들어갑니다url이 들어갑니다url이 들어갑니다</p>
+              <p class="content">내용이 들어갑니다 내용이 들어갑니다내용이 들어갑니다내용이 들어갑니다</p>
+              <p class="detail"><span class="detail-info">검색정보 : 키워드 + 사진 / 키워드가 들어 갑니다 , 파일명이 들어갑니다 </span> <span class="detail-time">검색일 : 2022.01.12</span></p>
+            </div>
+          </div>
+          <textarea placeholder="내용 입력" class="btn-on memo" ></textarea>
+          <div class="state">
+            <input type="hidden" class="bor10 M-box-in" name="trace-state">
+            <div class="selection">
+              <button>모니터링</button>
+              <ul class="option">
+                <li>삭제 완료</li>
+                <li>삭제 요청</li>
+                <li>모니터링</li>
+              </ul>
+            </div>
+          </div>
+          <button class="btn-off double-chk">2차 검증</button>
+        </li>
         `;
     }
     // 히스토리 탭
@@ -148,26 +177,42 @@
         his[idx].classList.add('active');
       }
     })
-    // 셀렉트 구현
+    // 셀렉트 구현(0317 수정)
     const select = document.querySelectorAll(".selection");
-    select.forEach(sel => {
-      sel.addEventListener("click", (e) => {
-        sel.classList.toggle('active');
-        const option = sel.querySelectorAll(".option li");
+    for (let i = 0; i < select.length; i++) {
+      switch (select[i].children[0].innerText) {
+        case '삭제 요청':
+          select[i].children[0].style.color = '#e87728';
+          break;
+        case '모니터링':
+          select[i].children[0].style.color = '#194894';
+          break;
+      }
+      select[i].addEventListener("click", (e) => {
+        select[i].classList.toggle('active');
+        const option = select[i].querySelectorAll(".option li");
         option.forEach(btn => {
           btn.addEventListener('click', (e) => {
             let val = e.target.innerText;
-            sel.children[0].innerHTML = val;
+            select[i].children[0].innerHTML = val;
+            switch (e.target.innerText) {
+              case '삭제 요청':
+                select[i].children[0].style.color = '#e87728';
+                break;
+              case '모니터링':
+                select[i].children[0].style.color = '#194894';
+                break;
+            }
           })
         });
       });
-    })
+    }
     //검색이력 내용 넓이
     const context = document.querySelectorAll(".history-search-list .cont");
     context.forEach(con => {
       if (con.querySelector('.con2').innerHTML === '') {
         con.querySelector('.con2').style.display = 'none';
-        con.querySelector('.con1').style.maxWidth="100%";
+        con.querySelector('.con1').style.maxWidth = "100%";
       }
     })
 
@@ -181,7 +226,7 @@
         per.style.fontSize = "1rem";
         per.style.cssText = "font-size:1rem; color:#545759;";
         pro.nextElementSibling.innerHTML = "다시보기";
-        pro.nextElementSibling.style.color="#e87728";
+        pro.nextElementSibling.style.color = "#e87728";
       }
     })
 

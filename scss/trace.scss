@@ -31,6 +31,7 @@
   .trace-list.active {
     @extend %flex;
     flex-wrap: wrap;
+    justify-content: start;
   }
   .list {
     position: relative;
@@ -84,6 +85,10 @@
       grid-template-rows: repeat(5, auto);
       padding: 14px 10px;
       margin-bottom: 30px;
+      margin-right: 30px;
+      &:nth-of-type(4n){
+        margin-right: 0;
+      }
       .img-box {
         width: 100%;
         grid-row: 2/3;

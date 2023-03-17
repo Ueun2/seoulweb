@@ -20,9 +20,8 @@
 
   <article class="result-wrap wrapper">
     <script>header();</script>
-    <!-- 수정부분 -->
     <div class="re-search M-box-up bor10 layout">
-      <form name="re-search" action="javascript://" onsubmit="reSearch()">
+      <form name="re-search" action="javascript://" onsubmit="reSearch(this)">
         <section class="video-chk">
           <h2>일치율 높은순</h2>
           <div class="chk-box">
@@ -50,7 +49,7 @@
           </div>
         </section>
         <div class="search-bar bor10 bor10 btn-off">
-          <input type="text" placeholder="검색어를 입력하세요">
+          <input type="text" placeholder="검색어를 입력하세요" name="re_search">
         </div>
       </form>
     </div>
@@ -60,9 +59,11 @@
         <div class="search-list">
           <div class="search-tab">
             <div class="tab on">
+              <!-- 수정부분 -->
               <div class="search-img"><img src="./img/replace/man.png" alt=""></div>
               <p>"<span>고딩</span>"에 대한 검색 결과 입니다.</p>
             </div>
+            <!-- --------- -->
             <img src="./img/result/double-right.png" alt="" class="next research">
           </div>
         </div>
@@ -116,8 +117,6 @@
         `;
       }
     }
-    // 체크박스
-
     // 검색 디테일
     const imgBtn = document.querySelectorAll(".img-box");
     const modal = document.querySelector("#modal")
@@ -150,19 +149,19 @@
       })
     });
     // 재검색
-    const reSearch = () => {
+    const reSearch = (con) => {
       const tabW = document.querySelector('.search-tab');
       const text = `
       <div class="tab research">
-              <p>검색어</p>
+              <p>${con.re_search.value}</p>
             </div>
       `;
       tabW.insertAdjacentHTML("beforeend", text);
-      document.querySelector('.next').style.display = 'block'
-      tabplay();
+      document.querySelector('.next').style.display = 'block';
+      document.querySelector('.search-bar').style.display='none';
     }
 
-    // 검색내용 이미지 클릭시 팝업
+    // 검색내용 이미지 클릭시 팝업(0317추가)
     const searchImg = document.querySelector('.search-img');
     searchImg.addEventListener('click', function () {
       document.body.style.overflow = 'hidden';

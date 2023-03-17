@@ -51,14 +51,14 @@
   <script>
     const list = document.querySelector(".trace-list");
     for (let i = 0; i < 16; i++) {
-      if (i < 8) {
+      if (i < 7) {
         list.innerHTML += `
         <section class="list M-box-up bor10">
             <div class="img-box">
               <div class="img"><img src="./img/replace/man.png" alt="" loading="lazy" ></div>
               <img src="./img/common/sns/facebook-round.png" alt="" class="sns">
             </div>
-            <h2 class="unity">삭제 요청 중 <span>(99%)</span></h2>
+            <h2 class="unity"><strong class="state">삭제 요청 중</strong> <span>(99%)</span></h2>
             <p class="url">url이 들어갑니다</p>
             <p class="content">글의 내용이 들어갑니다</p>
             <p class="detail"><span class="detail-info">검색 정보가 들어갑니다</span> <span class="detail-time">추가일이 들어갑니다</span></p>
@@ -74,7 +74,7 @@
               </div>
               <img src="./img/common/sns/insta-round.png" alt="" class="sns">
             </div>
-            <h2 class="unity ">관리 중 <span>(99%)</span></h2>
+            <h2 class="unity "><strong class="state">관리 중</strong> <span>(99%)</span></h2>
             <p class="url">url이 들어갑니다</p>
             <p class="content">글의 내용이 들어갑니다</p>
             <p class="detail"><span class="detail-info">검색 정보가 들어갑니다</span> <span class="detail-time">추가일이 들어갑니다</span></p>
@@ -151,7 +151,14 @@
         }
       })
     });
-
+    // 요청값에 따른 색상 변화 (0317추가)
+    const listTit = list.querySelectorAll('.unity .state');
+    console.log(listTit)
+    listTit.forEach(e => {
+      if (e.innerText === '관리 중') {
+        e.style.color='#194894';
+      }
+    })
     view_type();
   </script>
 </body>

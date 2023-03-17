@@ -59,8 +59,8 @@
       <div class="search-contents">
         <div class="search-list">
           <div class="search-tab">
-            <div class="tab  on">
-              <img src="./img/replace/man.png" alt="">
+            <div class="tab on">
+              <div class="search-img"><img src="./img/replace/man.png" alt=""></div>
               <p>"<span>고딩</span>"에 대한 검색 결과 입니다.</p>
             </div>
             <img src="./img/result/double-right.png" alt="" class="next research">
@@ -161,21 +161,23 @@
       document.querySelector('.next').style.display = 'block'
       tabplay();
     }
-    // 탭
-    const tabplay = () => {
-      const tab = document.querySelectorAll(".tab");
-      tab[0].onclick = function () {
-        this.classList.add('on');
-        tab[1].classList.remove('on');
-        document.querySelector('.search-bar').style.display = 'block';
+
+    // 검색내용 이미지 클릭시 팝업
+    const searchImg = document.querySelector('.search-img');
+    searchImg.addEventListener('click', function () {
+      document.body.style.overflow = 'hidden';
+      modal.style.display = 'block';
+      modal.innerHTML = `<div class='modal bor10 searchmodal'>
+        ${this.children[0].outerHTML}
+      <button class="esc-btn">닫기</button>
+        </div>`;
+      const esc = modal.querySelector(".esc-btn");
+      esc.onclick = () => {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'unset';
       }
-      tab[1].onclick = function () {
-        this.classList.add('on');
-        tab[0].classList.remove('on');
-        document.querySelector('.search-bar').style.display = 'none';
-      }
-      tab[1].click();
-    }
+    })
+
     view_type();
 
     // ----------체크박스------------
@@ -202,16 +204,16 @@
         }
         // 다른체크시 전체 체크값해제
         if (this.className !== 'W') {
-          [...chk].filter(check=>check.className==='W'&& check.name===this.name).forEach(e=>{
-            if(e.checked){
+          [...chk].filter(check => check.className === 'W' && check.name === this.name).forEach(e => {
+            if (e.checked) {
               e.checked = false;
               e.value ^= 1;
             }
           })
         }
         // 전체 누르면 다른값 체크해제
-        if (this.className==='W') {
-          [...chk].filter(vi => (vi.className !== this.className && vi.name ===this.name)).forEach(e => {
+        if (this.className === 'W') {
+          [...chk].filter(vi => (vi.className !== this.className && vi.name === this.name)).forEach(e => {
             if (e.checked) {
               e.checked = false;
               e.value ^= 1;

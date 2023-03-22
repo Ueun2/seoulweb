@@ -112,18 +112,17 @@
   }
   // 검색 이력
   .search-history {
-    P {
-      @include flex(center);
-    }
+    text-align: center;
     .history-list {
       li {
         margin-bottom: 10px;
         padding: 16px 20px;
       }
       .type, .cont {
-        justify-content: start;
+        text-align: left
       }
       .cont {
+        @include flex(start,center);
         span {
           max-width: 50%;
           overflow: hidden;
@@ -134,6 +133,13 @@
     }
     .num {
       width: 4%;
+    }
+    .counselor {
+      width: 10%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding: 0 8px;
     }
     .type, .social {
       width: 12%;
@@ -159,6 +165,7 @@
       width: 14.4%;
     }
     .progress {
+      display: flex;
       width: 8.8%;
     }
     .review {
@@ -191,7 +198,7 @@
     }
     .cont {
       flex: 1;
-      .img{
+      .img {
         cursor: auto;
       }
     }
@@ -248,20 +255,19 @@
           width: 22px;
         }
         .text {
-          @include flex(stretch,start) {
+          @include flex(stretch, start) {
             padding: 0 10px;
             flex-direction: column;
             max-width: 662px;
             flex: 1;
-            >*{
+            > * {
               width: 100%;
             }
-            
           }
           .detail {
             display: flex;
             justify-content: space-between;
-            .detail-info{
+            .detail-info {
               width: 70%;
               overflow: hidden;
               white-space: nowrap;

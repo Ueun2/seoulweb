@@ -26,9 +26,15 @@
         </form>
         <p class="total-num">총 <span>30</span>건</p>
       </div>
-      <h2><span class="num">순번</span><span class="type">검색 유형</span><span class="cont">내용</span><span
-          class="social">SNS</span><span class="time">검색 일시</span><span class="progress">검색 진행률</span><span
-          class="dist">구분</span></h2>
+      <h2>
+        <span class="num">순번</span>
+        <span class="counselor">상담사</span>
+        <span class="type">검색 유형</span>
+        <span class="cont">내용</span>
+        <span class="social">SNS</span>
+        <span class="time">검색 일시</span>
+        <span class="progress">검색 진행률</span>
+        <span class="dist">구분</span></h2>
       <ul class="history-list history-search-list">
       </ul>
     </section>
@@ -48,6 +54,7 @@
       <h2><span class="num">순번</span><span class="cont">내용 및 검색 정보</span> <span class="memo">메모</span> <span
           class="state">상태</span><span class="double-chk">2차 검증</span></h2>
       <ul class="history-list history-trace-list">
+        
       </ul>
     </section>
 
@@ -63,6 +70,7 @@
       searchList.innerHTML += `
         <li class="btn-off bor10">
             <p class="num">${i * 2}</p>
+            <p class="counselor">admin</p>
             <p class="type"><span></span><span>키워드</span></p>
             <p class="cont"><span class="con1">엄훠나 세솽에 이런 일이 다 있고 참 이상하네요 정말 정말 정말 왜 이렇게 이상할까요?????</span> <span class='con2'></span></p>
             <p class="social">
@@ -80,6 +88,7 @@
           </li>
           <li class="btn-off bor10">
             <p class="num">${i * 2 - 1}</p>
+            <p class="counselor">admin000000000000000000</p>
             <p class="type"><span><img src="./img/common/research.png" alt="" class="reply"></span><span>키워드 + 사진</span></p>
             <p class="cont"><span class="con1">엄훠나 세솽에 이런 일이 다 있고 참 이상하네요</span> <span class='con2'>&nbsp;/ abcdefghijk.png</span></p>
             <p class="social">

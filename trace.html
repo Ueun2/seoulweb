@@ -40,7 +40,35 @@
         </div>
       </div>
       <div class="trace-list list-content ">
-
+        <section class="list M-box-up bor10">
+          <div class="img-box">
+            <div class="img"><img src="./img/replace/man.png" alt="" loading="lazy"></div>
+            <img src="./img/common/sns/facebook-round.png" alt="" class="sns">
+          </div>
+          <h2 class="unity"><strong class="state">삭제 요청 중</strong> <span>(99%)</span></h2>
+          <p class="url">url이 들어갑니다</p>
+          <p class="content">글의 내용이 들어갑니다</p>
+          <p class="detail"><span class="detail-info">검색 정보가 들어갑니다</span> <span class="counselor">상담사 : admin</span> <span class="detail-time">추가일이 들어갑니다</span>
+          </p>
+          <button class="del del-btn btn-off">삭제</button>
+        </section>
+        <section class="list M-box-up bor10">
+          <div class="img-box">
+            <div class="video">
+              <video src="./img/replace/replacevideo.mp4" loading="lazy"></video>
+              <div class="play-wrap">
+                <div class="play-btn"></div>
+              </div>
+            </div>
+            <img src="./img/common/sns/insta-round.png" alt="" class="sns">
+          </div>
+          <h2 class="unity "><strong class="state">관리 중</strong> <span>(99%)</span></h2>
+          <p class="url">url이 들어갑니다</p>
+          <p class="content">글의 내용이 들어갑니다</p>
+          <p class="detail"><span class="detail-info">검색 정보가 들어갑니다 검색 정보가 들어갑니다검색 정보가 들어갑니다검색 정보가 들어갑니다검색 정보가 들어갑니다검색 정보가 들어갑니다검색 정보가 들어갑니다검색 정보가 들어갑니다검색 정보가 들어갑니다검색 정보가 들어갑니다검색 정보가 들어갑니다</span> <span class="counselor">상담사 : admin</span> <span class="detail-time">추가일이 들어갑니다</span>
+          </p>
+          <button class="del del-btn btn-off">삭제</button>
+        </section>
       </div>
     </seciton>
     <script>
@@ -50,9 +78,10 @@
   </article>
   <script>
     const list = document.querySelector(".trace-list");
+    let html = '';
     for (let i = 0; i < 16; i++) {
       if (i < 7) {
-        list.innerHTML += `
+        html += `
         <section class="list M-box-up bor10">
             <div class="img-box">
               <div class="img"><img src="./img/replace/man.png" alt="" loading="lazy" ></div>
@@ -83,6 +112,7 @@
         `;
       }
     }
+    list.insertAdjacentHTML('beforeend',html)
     // 셀렉트 구현
     const select = document.querySelector(".selection");
     const option = document.querySelectorAll(".selection .option li");
@@ -153,10 +183,9 @@
     });
     // 요청값에 따른 색상 변화 (0317추가)
     const listTit = list.querySelectorAll('.unity .state');
-    console.log(listTit)
     listTit.forEach(e => {
       if (e.innerText === '관리 중') {
-        e.style.color='#194894';
+        e.style.color = '#194894';
       }
     })
     view_type();

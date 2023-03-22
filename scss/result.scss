@@ -21,18 +21,43 @@
       input {
         margin-right: 8px;
       }
+      .describe{
+        display: inline-block;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        background-color: $blue;
+        vertical-align: middle;
+        font-size: 12px;
+        text-align: center;
+        line-height: 14px;
+        cursor: pointer;
+        color: $main-bg;
+        margin-top: -2px;
+      }
     }
   }
   .video-chk,.pri-chk{
     display: none;
   }
   .search-bar {
+    display: flex;
     margin-top: 30px;
-    padding: 0 12px 0 46px;
-    background: url(../img/common/search.png) no-repeat 10px center/24px, $main-bg;
+    padding: 0 12px;
     input {
-      width: 100%;
+      flex:1;
+      background: url(../img/common/search.png) no-repeat 10px center/24px, $main-bg;
       height: 46px;
+      margin-right: 16px;
+      padding-left: 46px;
+    }
+    button{
+      color: $blue;
+      padding: 0 16px;
+      &:active{
+        @extend %btn-on;
+        font-weight: 500;
+      }
     }
   }
   // 이미지로 검색
@@ -226,8 +251,11 @@
   padding: 50px 23px 20px 20px;
   display: flex;
   flex-direction: column;
-  img,video{
-    width: 300px;
+  img{
+    max-width: 300px;
+  }
+  video{
+    max-width: 500px;
   }
   .esc-btn{
     position: absolute;

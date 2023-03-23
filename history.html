@@ -34,7 +34,8 @@
         <span class="social">SNS</span>
         <span class="time">검색 일시</span>
         <span class="progress">검색 진행률</span>
-        <span class="dist">구분</span></h2>
+        <span class="dist">구분</span>
+      </h2>
       <ul class="history-list history-search-list">
       </ul>
     </section>
@@ -54,7 +55,7 @@
       <h2><span class="num">순번</span><span class="cont">내용 및 검색 정보</span> <span class="memo">메모</span> <span
           class="state">상태</span><span class="double-chk">2차 검증</span></h2>
       <ul class="history-list history-trace-list">
-        
+
       </ul>
     </section>
 
@@ -72,7 +73,14 @@
             <p class="num">${i * 2}</p>
             <p class="counselor">admin</p>
             <p class="type"><span></span><span>키워드</span></p>
-            <p class="cont"><span class="con1">엄훠나 세솽에 이런 일이 다 있고 참 이상하네요 정말 정말 정말 왜 이렇게 이상할까요?????</span> <span class='con2'></span></p>
+            <div class="cont">
+              <div class="img-box">
+                <div class="img">
+                  <img src="./img/replace/man.png" alt="" loading="lazy">
+                </div>
+              </div>
+              <p class="con1">엄훠나 세솽에 이런 일이 다 있고 참 이상하네요 정말 정말 정말 왜 이렇게 이상할까요?????</p>
+            </div>
             <p class="social">
               <img src="./img/common/sns/face.png" alt="">
               <img src="./img/common/sns/twitter.png" alt="">
@@ -90,7 +98,14 @@
             <p class="num">${i * 2 - 1}</p>
             <p class="counselor">admin000000000000000000</p>
             <p class="type"><span><img src="./img/common/research.png" alt="" class="reply"></span><span>키워드 + 사진</span></p>
-            <p class="cont"><span class="con1">엄훠나 세솽에 이런 일이 다 있고 참 이상하네요</span> <span class='con2'>&nbsp;/ abcdefghijk.png</span></p>
+            <div class="cont">
+              <div class="img-box">
+                <div class="img">
+                  <img src="./img/replace/man.png" alt="" loading="lazy">
+                </div>
+              </div>
+              <p class="con1">엄훠나 세솽에 이런 일이 다 있고 참 이상하네요 정말 정말 정말 왜 이렇게 이상할까요?????</p>
+            </div>
             <p class="social">
               <img src="./img/common/sns/face.png" alt="">
               <img src="./img/common/sns/google.png" alt="">
@@ -112,7 +127,7 @@
       // 태그수정(0319수정)
       traceList.innerHTML += `
       <li class="btn-off bor10">
-          <p class="num">${2*i}</p>
+          <p class="num">${2 * i}</p>
           <div class="cont">
             <div class="img-box">
               <div class="img">
@@ -129,7 +144,7 @@
           <textarea placeholder="내용 입력" class="btn-on memo" ></textarea>
           <div class="state">
             <input type="hidden" class="bor10 M-box-in" name="trace-state">
-            <div class="selection">
+            <div class="selection setTraceHistory">
               <button>삭제 완료</button>
               <ul class="option">
                 <li>삭제 완료</li>
@@ -141,7 +156,7 @@
           <button class="btn-off double-chk">2차 검증</button>
         </li>
         <li class="btn-off bor10">
-          <p class="num">${2*i-1}</p>
+          <p class="num">${2 * i - 1}</p>
           <div class="cont">
             <div class="img-box">
               <div class="img">
@@ -158,7 +173,7 @@
           <textarea placeholder="내용 입력" class="btn-on memo" ></textarea>
           <div class="state">
             <input type="hidden" class="bor10 M-box-in" name="trace-state">
-            <div class="selection">
+            <div class="selection setTraceHistory">
               <button>모니터링</button>
               <ul class="option">
                 <li>삭제 완료</li>
@@ -188,7 +203,7 @@
       }
     })
     // 셀렉트 구현(0317 수정)
-    const select = document.querySelectorAll(".selection");
+    const select = document.querySelectorAll(".selection.setTraceHistory");
     for (let i = 0; i < select.length; i++) {
       switch (select[i].children[0].innerText) {
         case '삭제 요청':
@@ -217,14 +232,6 @@
         });
       });
     }
-    //검색이력 내용 넓이
-    const context = document.querySelectorAll(".history-search-list .cont");
-    context.forEach(con => {
-      if (con.querySelector('.con2').innerHTML === '') {
-        con.querySelector('.con2').style.display = 'none';
-        con.querySelector('.con1').style.maxWidth = "100%";
-      }
-    })
 
     // 검색 진행률
     const progress = document.querySelectorAll("#history .dot-wrap");
@@ -239,6 +246,29 @@
         pro.nextElementSibling.style.color = "#e87728";
       }
     })
+
+    // 0323추가 사진 클릭시 이미지 팝업
+    const modal = document.querySelector("#modal");
+    const searchImg = document.querySelectorAll('.img');
+    for (let i = 0; i < searchImg.length; i++) {
+      searchImg[i].addEventListener('click', function () {
+        document.body.style.overflow = 'hidden';
+        modal.style.display = 'block';
+        modal.innerHTML = `<div class='modal bor10 imgmodal'>
+        ${this.children[0].outerHTML}
+      <button class="esc-btn">닫기</button>
+        </div>`;
+        if (modal.querySelector('video')) {
+          modal.querySelector('video').controls = true;
+        }
+        const esc = modal.querySelector(".esc-btn");
+        esc.onclick = () => {
+          modal.style.display = 'none';
+          document.body.style.overflow = 'unset';
+        }
+      })
+    }
+
 
   </script>
 </body>

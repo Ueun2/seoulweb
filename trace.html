@@ -22,7 +22,7 @@
       <h1 class="title">추적 대상 모니터링</h1>
       <div class="trace-contents">
         <form name="trace-list" class="search-box">
-          <div class="selection">
+          <div class="selection setTrace">
             <button type="button">전체</button>
             <input type="hidden" class="bor10 M-box-in" name="trace-type">
             <ul class="option">
@@ -114,7 +114,7 @@
     }
     list.insertAdjacentHTML('beforeend',html)
     // 셀렉트 구현
-    const select = document.querySelector(".selection");
+    const select = document.querySelector(".selection.setTrace");
     const option = document.querySelectorAll(".selection .option li");
     const tType = document.querySelector('input[name=trace-type]');
     select.addEventListener("click", (e) => {

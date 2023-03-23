@@ -204,6 +204,17 @@ button {
   padding: 8px 6px;
   width: 100%;
   background: #F2F2F8;
+  max-height: 200px;
+  overflow-y: scroll;
+}
+.selection .option::-webkit-scrollbar {
+  width: 11px;
+}
+.selection .option::-webkit-scrollbar-thumb {
+  background-clip: padding-box;
+  border: 4px solid rgba(0, 0, 0, 0);
+  width: 2px;
+  border-radius: 20px;
 }
 .selection .option li {
   width: 100%;
@@ -428,9 +439,6 @@ header li a {
           box-shadow: -3px -3px 9px rgba(255, 255, 255, 0.9), inset -3px -3px 6px #ffffff, inset 3px 3px 6px rgba(25, 72, 148, 0.28);
 }
 
-.login {
-  position: relative;
-}
 .login > li {
   cursor: pointer;
   background: no-repeat center;
@@ -438,10 +446,13 @@ header li a {
   width: 54px;
   font-size: 0;
 }
-.login > li:first-of-type {
+.login > li.setting-btn {
+  background-image: url(../img/common/setting.png);
+}
+.login > li.notice-btn {
   background-image: url(../img/common/bell.png);
 }
-.login > li:last-of-type {
+.login > li.user-btn {
   background-image: url(../img/common/user.png);
 }
 .login > li > a {
@@ -454,11 +465,39 @@ header li a {
   -webkit-box-shadow: -3px -3px 9px rgba(255, 255, 255, 0.9), inset -3px -3px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 6px rgba(0, 0, 0, 0.4);
           box-shadow: -3px -3px 9px rgba(255, 255, 255, 0.9), inset -3px -3px 6px rgba(255, 255, 255, 0.4), inset 3px 3px 6px rgba(0, 0, 0, 0.4);
 }
+.login .setting-btn.active {
+  background-image: url(../img/common/setting-on.png);
+}
 .login .user-btn.active {
   background-image: url(../img/common/user-on.png);
 }
 .login .notice-btn.active {
   background-image: url(../img/common/bell-on.png);
+}
+.login .login-detail {
+  display: none;
+  cursor: default;
+  background: #F2F2F8;
+  border-width: 2px 0 0 2px;
+  border-color: #fff;
+  border-style: solid;
+  -webkit-box-shadow: 6px 6px 12px rgba(25, 72, 148, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.2);
+          box-shadow: 6px 6px 12px rgba(25, 72, 148, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.2);
+  padding: 10px 20px;
+  font-size: 0.875rem;
+  min-width: 240px;
+}
+.login .login-detail > button {
+  color: #8A8A95;
+}
+.login .login-detail > button.esc {
+  position: absolute;
+  font-size: 0;
+  top: 4px;
+  right: 4px;
+  width: 16px;
+  height: 16px;
+  background: url(../img/common/esc.png) no-repeat center/80%;
 }
 .login .user-btn {
   display: -webkit-box;
@@ -477,17 +516,6 @@ header li a {
           align-items: end;
 }
 .login .user-btn .user-detail {
-  display: none;
-  cursor: default;
-  width: 240px;
-  height: 74px;
-  background: #F2F2F8;
-  border-width: 2px 0 0 2px;
-  border-color: #fff;
-  border-style: solid;
-  -webkit-box-shadow: 6px 6px 12px rgba(25, 72, 148, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.2);
-          box-shadow: 6px 6px 12px rgba(25, 72, 148, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.2);
-  padding: 10px 20px;
   font-size: 0.875rem;
 }
 .login .user-btn .user-detail .user-name {
@@ -498,7 +526,7 @@ header li a {
   color: #1B1E20;
   margin-right: 4px;
 }
-.login .user-btn .user-detail button.logout, .login .user-btn .user-detail .my-info {
+.login .user-btn .user-detail .logout, .login .user-btn .user-detail .my-info {
   background-repeat: no-repeat;
   background-position: left center;
   padding-left: 16px;
@@ -508,19 +536,7 @@ header li a {
   background-image: url(../img/common/info.png);
   margin-right: 40px;
 }
-.login .user-btn .user-detail button {
-  color: #8A8A95;
-}
-.login .user-btn .user-detail button.esc {
-  font-size: 0;
-  position: absolute;
-  top: 4px;
-  right: 4px;
-  width: 16px;
-  height: 16px;
-  background: url(../img/common/esc.png) no-repeat center/80%;
-}
-.login .user-btn .user-detail button.logout {
+.login .user-btn .user-detail .logout {
   background-image: url(../img/common/logout.png);
 }
 

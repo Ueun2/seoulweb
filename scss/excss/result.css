@@ -193,10 +193,6 @@
   display: none;
 }
 #result .result-list.active {
-  -webkit-box-pack: justify;
-     -moz-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
 }

@@ -205,7 +205,6 @@
   position: relative;
   margin: 0 auto;
   width: 680px;
-  max-height: 77.7777777778vh;
   padding: 27px 30px 30px 27px;
 }
 .keyword::-webkit-scrollbar {
@@ -285,6 +284,7 @@
 }
 .keyword .neologism-title {
   color: #E87728;
+  margin-bottom: 20px;
 }
 .keyword .neologism {
   margin-top: 15px;

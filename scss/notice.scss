@@ -167,7 +167,6 @@
   position: relative;
   margin: 0 auto;
   width: 680px;
-  max-height: 77.77777777777778vh;
   padding: 27px 30px 30px 27px;
   &::-webkit-scrollbar {
     width: 14px;
@@ -230,6 +229,7 @@
   }
   .neologism-title {
     color: $orange;
+    margin-bottom: 20px;
   }
   .neologism {
     margin-top: 15px;

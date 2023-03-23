@@ -2,8 +2,13 @@
 @import "mixin";
 /* 로고 */
 #logo {
-  text-align: center;
   margin: 40px 0 60px;
+  @include flex(center);
+  img{
+    height: 90px;
+    margin: 0 20px;
+  }
+  
 }
 /* 검색 */
 .search {
@@ -140,8 +145,7 @@
   display: flex;
   justify-content: space-between;
 }
-.target,
-.notice {
+.target,.notice {
   padding: 20px;
   h2 {
     margin-top: 0;
@@ -165,6 +169,7 @@
   }
   .target-card {
     padding: 0 10px;
+    font-size: 0;
   }
   section {
     cursor: pointer;
@@ -193,6 +198,11 @@
   p {
     padding: 8px 10px 4px;
     border-bottom: 1px dashed transparentize($blue, 0.8);
+    display:-webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+    text-overflow:ellipsis;
     &:last-of-type {
       border-bottom: none;
     }

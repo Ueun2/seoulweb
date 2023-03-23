@@ -7,8 +7,23 @@
 
 /* 로고 */
 #logo {
-  text-align: center;
   margin: 40px 0 60px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+     -moz-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+#logo img {
+  height: 90px;
+  margin: 0 20px;
 }
 
 /* 검색 */
@@ -196,18 +211,15 @@
           justify-content: space-between;
 }
 
-.target,
-.notice {
+.target, .notice {
   padding: 20px;
 }
-.target h2,
-.notice h2 {
+.target h2, .notice h2 {
   margin-top: 0;
   width: 100%;
   margin-bottom: 10px;
 }
-.target h2 a,
-.notice h2 a {
+.target h2 a, .notice h2 a {
   font-size: 0.875rem;
   font-weight: 400;
   width: 150px;
@@ -225,6 +237,7 @@
 }
 .target .target-card {
   padding: 0 10px;
+  font-size: 0;
 }
 .target section {
   cursor: pointer;
@@ -254,6 +267,11 @@
 .notice p {
   padding: 8px 10px 4px;
   border-bottom: 1px dashed rgba(25, 72, 148, 0.2);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .notice p:last-of-type {
   border-bottom: none;

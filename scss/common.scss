@@ -78,7 +78,7 @@ button {
   border-radius: 3px;
 }
 // 셀렉션 꾸미기
-.selection {
+.selection,.setSearchNumber {
   position: relative;
   button {
     width: 100%;
@@ -104,6 +104,7 @@ button {
     background: $main-bg;
     max-height: 200px;
     overflow-y: scroll;
+    overflow-x: hidden;
     &::-webkit-scrollbar {
       width: 11px;
     }
@@ -296,7 +297,7 @@ header {
   }
 }
 .login {
-  > li {
+  .login-btn {
     cursor: pointer;
     background: no-repeat center;
     &.setting-btn {
@@ -334,34 +335,45 @@ header {
   .notice-btn.active {
     background-image: url(../img/common/bell-on.png);
   }
-  .login-detail {
-    display: none;
-    cursor: default;
-    @include modal(2px);
-    padding: 10px 20px;
-    font-size: 0.875rem;
-    min-width: 240px;
-    >button {
-      color: $middle;
-      &.esc {
-        position: absolute;
-        font-size: 0;
-        top: 4px;
-        right: 4px;
-        width: 16px;
-        height: 16px;
-        background: url(../img/common/esc.png) no-repeat center/80%;
+  .detail-btn{
+    position: relative;
+    .login-detail{
+      position: absolute;
+      display: none;
+      cursor: default;
+      @include modal(2px);
+      padding: 10px 20px;
+      font-size: 0.875rem;
+      top: 0;
+      right: 0;
+      >button {
+        color: $middle;
+        &.esc {
+          position: absolute;
+          font-size: 0;
+          top: 4px;
+          right: 4px;
+          width: 16px;
+          height: 16px;
+          background: url(../img/common/esc.png) no-repeat center/80%;
+        }
       }
     }
   }
   .setting-btn {
-  
+    .login-detail{
+      .setSearchNumber{
+        width: 100px;
+        height: 38px;
+      }
+    }
   }
   .user-btn {
     display: flex;
     flex-direction: column;
     align-items: end;
-    .user-detail {
+    .login-detail {
+      min-width: 240px;
       font-size: 0.875rem;
       .user-name {
         color: $normal;

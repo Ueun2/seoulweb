@@ -53,7 +53,7 @@ a {
   color: inherit;
 }
 
-.trace-add:active, .del-btn:active, .view-type button:active, .view-type button.active, .login > li:active, .selection button:active {
+.trace-add:active, .del-btn:active, .view-type button:active, .view-type button.active, .login .login-btn:active, .selection button:active, .setSearchNumber button:active {
   -webkit-box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.6), inset -3px -3px 5px #ffffff, inset 3px 3px 5px rgba(25, 72, 148, 0.32);
           box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.6), inset -3px -3px 5px #ffffff, inset 3px 3px 5px rgba(25, 72, 148, 0.32);
 }
@@ -174,10 +174,10 @@ button {
   border-radius: 3px;
 }
 
-.selection {
+.selection, .setSearchNumber {
   position: relative;
 }
-.selection button {
+.selection button, .setSearchNumber button {
   width: 100%;
   height: 100%;
   -moz-text-align-last: left;
@@ -189,7 +189,7 @@ button {
   background: url(../img/common/bottom.png) no-repeat 96% center;
   border-radius: 10px 10px 10px 10px;
 }
-.selection .option {
+.selection .option, .setSearchNumber .option {
   display: none;
   position: absolute;
   top: 100%;
@@ -206,28 +206,29 @@ button {
   background: #F2F2F8;
   max-height: 200px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }
-.selection .option::-webkit-scrollbar {
+.selection .option::-webkit-scrollbar, .setSearchNumber .option::-webkit-scrollbar {
   width: 11px;
 }
-.selection .option::-webkit-scrollbar-thumb {
+.selection .option::-webkit-scrollbar-thumb, .setSearchNumber .option::-webkit-scrollbar-thumb {
   background-clip: padding-box;
   border: 4px solid rgba(0, 0, 0, 0);
   width: 2px;
   border-radius: 20px;
 }
-.selection .option li {
+.selection .option li, .setSearchNumber .option li {
   width: 100%;
   cursor: pointer;
   padding: 4px 6px;
   font-size: 0.875rem;
 }
-.selection .option li:hover {
+.selection .option li:hover, .setSearchNumber .option li:hover {
   background-color: #194894;
   color: #F2F2F8;
   border-radius: 6px 6px 6px 6px;
 }
-.selection.active .option {
+.selection.active .option, .setSearchNumber.active .option {
   display: block;
   z-index: 99;
 }
@@ -439,23 +440,23 @@ header li a {
           box-shadow: -3px -3px 9px rgba(255, 255, 255, 0.9), inset -3px -3px 6px #ffffff, inset 3px 3px 6px rgba(25, 72, 148, 0.28);
 }
 
-.login > li {
+.login .login-btn {
   cursor: pointer;
   background: no-repeat center;
   height: 54px;
   width: 54px;
   font-size: 0;
 }
-.login > li.setting-btn {
+.login .login-btn.setting-btn {
   background-image: url(../img/common/setting.png);
 }
-.login > li.notice-btn {
+.login .login-btn.notice-btn {
   background-image: url(../img/common/bell.png);
 }
-.login > li.user-btn {
+.login .login-btn.user-btn {
   background-image: url(../img/common/user.png);
 }
-.login > li > a {
+.login .login-btn > a {
   width: 100%;
   height: 100%;
   vertical-align: middle;
@@ -474,7 +475,11 @@ header li a {
 .login .notice-btn.active {
   background-image: url(../img/common/bell-on.png);
 }
-.login .login-detail {
+.login .detail-btn {
+  position: relative;
+}
+.login .detail-btn .login-detail {
+  position: absolute;
   display: none;
   cursor: default;
   background: #F2F2F8;
@@ -485,12 +490,13 @@ header li a {
           box-shadow: 6px 6px 12px rgba(25, 72, 148, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.2);
   padding: 10px 20px;
   font-size: 0.875rem;
-  min-width: 240px;
+  top: 0;
+  right: 0;
 }
-.login .login-detail > button {
+.login .detail-btn .login-detail > button {
   color: #8A8A95;
 }
-.login .login-detail > button.esc {
+.login .detail-btn .login-detail > button.esc {
   position: absolute;
   font-size: 0;
   top: 4px;
@@ -498,6 +504,10 @@ header li a {
   width: 16px;
   height: 16px;
   background: url(../img/common/esc.png) no-repeat center/80%;
+}
+.login .setting-btn .login-detail .setSearchNumber {
+  width: 100px;
+  height: 38px;
 }
 .login .user-btn {
   display: -webkit-box;
@@ -515,28 +525,29 @@ header li a {
       -ms-flex-align: end;
           align-items: end;
 }
-.login .user-btn .user-detail {
+.login .user-btn .login-detail {
+  min-width: 240px;
   font-size: 0.875rem;
 }
-.login .user-btn .user-detail .user-name {
+.login .user-btn .login-detail .user-name {
   color: #545759;
 }
-.login .user-btn .user-detail strong {
+.login .user-btn .login-detail strong {
   font-size: 1rem;
   color: #1B1E20;
   margin-right: 4px;
 }
-.login .user-btn .user-detail .logout, .login .user-btn .user-detail .my-info {
+.login .user-btn .login-detail .logout, .login .user-btn .login-detail .my-info {
   background-repeat: no-repeat;
   background-position: left center;
   padding-left: 16px;
   margin-top: 9px;
 }
-.login .user-btn .user-detail .my-info {
+.login .user-btn .login-detail .my-info {
   background-image: url(../img/common/info.png);
   margin-right: 40px;
 }
-.login .user-btn .user-detail .logout {
+.login .user-btn .login-detail .logout {
   background-image: url(../img/common/logout.png);
 }
 

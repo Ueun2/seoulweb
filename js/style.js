@@ -42,7 +42,20 @@ document.addEventListener("DOMContentLoaded", function () {
   if (pathArr[last - 1] == 'notice.html') {
     notice.classList.add('active');
   }
-
+  // 헤더 셀렉트 구현
+  const select = document.querySelector(".setSearchNumber");
+  const option = document.querySelectorAll(".setSearchNumber .option li");
+  const tType = document.querySelector('input[name=searchNumber]');
+  select.addEventListener("click", (e) => {
+    e.stopPropagation();
+    select.classList.toggle('active');
+    option.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        select.children[0].innerHTML = e.target.innerText;
+        tType.value = e.target.innerText;
+      })
+    });
+  });
   // 리스트 타입
   const viewBtn = document.querySelectorAll('.view-type button');
   viewBtn.forEach((btn) => {

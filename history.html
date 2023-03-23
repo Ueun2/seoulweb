@@ -52,8 +52,14 @@
           <li><span>삭제 완료 :</span> 14</li>
         </ul>
       </div>
-      <h2><span class="num">순번</span><span class="cont">내용 및 검색 정보</span> <span class="memo">메모</span> <span
-          class="state">상태</span><span class="double-chk">2차 검증</span></h2>
+      <h2>
+        <span class="num">순번</span>
+        <span class="cont">내용 및 검색 정보</span> 
+        <span class="memo">메모</span> 
+        <span class="state">상태</span>
+        <span class="all-time">구분</span>
+        <span class="double-chk">재유포</span>
+      </h2>
       <ul class="history-list history-trace-list">
 
       </ul>
@@ -153,7 +159,8 @@
               </ul>
             </div>
           </div>
-          <button class="btn-off double-chk">2차 검증</button>
+          <button class="btn-off all-time">24시간 모니터링</button>
+          <a href="#" class="btn-off double-chk">0건</a>
         </li>
         <li class="btn-off bor10">
           <p class="num">${2 * i - 1}</p>
@@ -182,7 +189,8 @@
               </ul>
             </div>
           </div>
-          <button class="btn-off double-chk">2차 검증</button>
+          <button class="btn-off all-time">24시간 모니터링</button>
+          <button class="btn-off double-chk">0건</button>
         </li>
         `;
     }
@@ -266,6 +274,14 @@
           modal.style.display = 'none';
           document.body.style.overflow = 'unset';
         }
+      })
+    }
+
+    // 24시간 모니터링 버튼 활성화
+    const allTime = document.querySelectorAll(".all-time");
+    for (let i = 0; i < allTime.length; i++) {
+      allTime[i].addEventListener('click', function () {
+        this.classList.toggle('active');
       })
     }
 

@@ -273,6 +273,21 @@
 #history .search-history .review:active {
   font-weight: 500;
 }
+#history .trace-history .search-box {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+#history .trace-history .search-box .traceDist {
+  width: 200px;
+}
+#history .trace-history .search-box .traceDist button {
+  border-radius: 10px;
+}
+#history .trace-history .search-box .list-search {
+  margin-left: 10px;
+}
 #history .trace-history .selection .option li {
   font-size: 1rem;
 }

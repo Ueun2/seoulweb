@@ -362,9 +362,30 @@ header {
   }
   .setting-btn {
     .login-detail{
+      padding: 20px 40px 20px 20px;
       .setSearchNumber{
         width: 100px;
         height: 38px;
+        button{
+          background-size: 16px;
+          color: $black;
+        }
+      }
+    }
+    h2{
+      font-weight: 500;
+      margin-bottom: 8px;
+      padding-left: 10px;
+    }
+    .selbox{
+      display: flex;
+      .save{
+        width: 50px;
+        margin-left: 10px;
+        color: $blue;
+        &:active{
+          @extend %btn-on;
+        }
       }
     }
   }

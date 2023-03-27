@@ -53,7 +53,7 @@ a {
   color: inherit;
 }
 
-.trace-add:active, .del-btn:active, .view-type button:active, .view-type button.active, .login .login-btn:active, .selection button:active, .setSearchNumber button:active {
+.trace-add:active, .del-btn:active, .view-type button:active, .view-type button.active, .login .setting-btn .selbox .save:active, .login .login-btn:active, .selection button:active, .setSearchNumber button:active {
   -webkit-box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.6), inset -3px -3px 5px #ffffff, inset 3px 3px 5px rgba(25, 72, 148, 0.32);
           box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.6), inset -3px -3px 5px #ffffff, inset 3px 3px 5px rgba(25, 72, 148, 0.32);
 }
@@ -505,9 +505,32 @@ header li a {
   height: 16px;
   background: url(../img/common/esc.png) no-repeat center/80%;
 }
+.login .setting-btn .login-detail {
+  padding: 20px 40px 20px 20px;
+}
 .login .setting-btn .login-detail .setSearchNumber {
   width: 100px;
   height: 38px;
+}
+.login .setting-btn .login-detail .setSearchNumber button {
+  background-size: 16px;
+  color: #1B1E20;
+}
+.login .setting-btn h2 {
+  font-weight: 500;
+  margin-bottom: 8px;
+  padding-left: 10px;
+}
+.login .setting-btn .selbox {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.login .setting-btn .selbox .save {
+  width: 50px;
+  margin-left: 10px;
+  color: #194894;
 }
 .login .user-btn {
   display: -webkit-box;

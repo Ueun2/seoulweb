@@ -8,6 +8,7 @@
   <title>디지털 성범죄</title>
   <link rel="stylesheet" href="./css/common.min.css" />
   <link rel="stylesheet" href="./css/main.min.css" />
+  <link rel="stylesheet" href="./css/detail.min.css" />
   <script src="./header.js"></script>
   <script src="./footer.js"></script>
   <script src="./js/style.js"></script>
@@ -68,7 +69,8 @@
         <p>서울시가 제2·제3의 ‘n번방 사건’ 피해를 막기 위해 디지털 성범죄 피해자를 통합 지원하는 ‘서울 디지털성범죄 안심지원센터’를 29일 개관했다.</p>
         <p>'서울시 디지털성범죄 안심지원센터' 개관</p>
         <p>서울시는 29일 오후 동작구 서울여성가족재단 내 '서울 디지털성범죄 안심지원센터'에서 현판식을 열었다.</p>
-        <p>[더팩트ㅣ이새롬 기자] 오세훈 서울시장과 최관호 서울경찰청장이 29일 오후 서울 동작구 대방동 서울여성가족재단에서 열린 '서울 디지털성범죄 안심지원센터' 개관식에 참석해 기념촬영을 하고 있다.</p>
+        <p>[더팩트ㅣ이새롬 기자] 오세훈 서울시장과 최관호 서울경찰청장이 29일 오후 서울 동작구 대방동 서울여성가족재단에서 열린 '서울 디지털성범죄 안심지원센터' 개관식에 참석해 기념촬영을 하고 있다.
+        </p>
       </section>
     </div>
 
@@ -154,6 +156,61 @@
       fileUp.files = file.files;
       document.querySelector(".file-name").value = file.files[0].name;
     }
+    // 대상 디테일(0324추가 상단에 detail.min.css 삽입하셔야합니다)
+    const traceImg = document.querySelectorAll(".img-box");
+    const modal = document.querySelector("#modal")
+    traceImg.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        //XMLHttpRequest 객체 생성
+        var xhr = new XMLHttpRequest();
+        //요청을 보낼 방식, 주소, 비동기여부 설정
+        xhr.open('GET', 'trace-detail.html', true);
+        //요청 전송
+        xhr.send(null);
+        //통신후 작업
+        xhr.onload = () => {
+          //통신 성공
+          if (xhr.status == 200) {
+            document.body.style.overflow = 'hidden';
+            modal.style.display = 'block';
+            modal.innerHTML = xhr.response;
+            const esc = document.querySelector(".trace-detail .esc-btn");
+            esc.onclick = () => {
+              modal.style.display = 'none';
+              document.body.style.overflow = 'unset';
+            }
+            const _CANVASBOX = document.querySelectorAll(`.preview-img `);
+            //비디오 태그의 메타데이터가 들어오면
+            _CANVASBOX.forEach(img => {
+              let _VIDEO = img.querySelector('video');
+              _VIDEO.addEventListener('loadedmetadata', function (e) {
+                img.children[0].width = _VIDEO.videoWidth;
+                img.children[0].height = _VIDEO.videoHeight;
+                const time = Math.random() * _VIDEO.duration;
+                _VIDEO.currentTime = time; //비디오의 영상길이 중 랜덤 타임을 뽑음
+                img.children[1].getContext("2d").drawImage(_VIDEO, 0, 0, _VIDEO.videoWidth, _VIDEO.videoHeight);
+                // 비디오 플레이
+                const video = document.querySelectorAll(".img-box .video");
+                if (video) {
+                  video.forEach(vid => {
+                    const btn = vid.querySelector('.play-btn');
+                    btn.onclick = () => {
+                      vid.querySelector("video").play();
+                      vid.querySelector("video").controls = true;
+                      vid.querySelector(".play-wrap").style.display = 'none';
+                    }
+                  })
+                }
+              })
+            })
+          } else {
+            //통신 실패
+            console.log("통신 실패");
+          }
+
+        }
+      })
+    });
   </script>
 </body>
 

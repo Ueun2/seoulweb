@@ -191,6 +191,18 @@
   }
   // 추적 이력
   .trace-history {
+    .search-box{
+      display: flex;
+      .traceDist{
+        width: 200px;
+        button{
+          border-radius: 10px;
+        }
+      }
+      .list-search{
+        margin-left: 10px;
+      }
+    }
     .selection {
       .option li {
         font-size: 1rem;

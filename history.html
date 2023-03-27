@@ -43,6 +43,15 @@
     <section class="trace-history layout history">
       <div class="searchbox">
         <form name="history-search" class="search-box">
+          <div class="selection traceDist">
+            <button type="button">전체</button>
+            <input type="hidden" class="bor10 M-box-in" name="traceDist">
+            <ul class="option">
+              <li>전체</li>
+              <li>24시간 모니터링 ON</li>
+              <li>24시간 모니터링 OFF</li>
+            </ul>
+          </div>
           <input type="text" class="list-search bor10 btn-off" placeholder="검색어를 입력해 주세요">
         </form>
         <ul class="currently-state">
@@ -54,8 +63,8 @@
       </div>
       <h2>
         <span class="num">순번</span>
-        <span class="cont">내용 및 검색 정보</span> 
-        <span class="memo">메모</span> 
+        <span class="cont">내용 및 검색 정보</span>
+        <span class="memo">메모</span>
         <span class="state">상태</span>
         <span class="all-time">구분</span>
         <span class="double-chk">재유포</span>
@@ -284,7 +293,20 @@
         this.classList.toggle('active');
       })
     }
-
+    //  0324추가 추적이력 셀렉트 구현
+    const traceDist = document.querySelector(".selection.traceDist");
+    traceDist.addEventListener("click", (e) => {
+      const option = traceDist.querySelectorAll(".option li");
+      const tType = traceDist.querySelector('input[name=traceDist]');
+      e.stopPropagation();
+      traceDist.classList.toggle('active');
+      option.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          traceDist.children[0].innerHTML = e.target.innerText;
+          tType.value = e.target.innerText;
+        })
+      });
+    });
 
   </script>
 </body>

@@ -23,20 +23,24 @@ const header = () => {
     <ul class="login">
       <li class="M-box-up bor10 login-btn setting-btn detail-btn">설정
         <div class="setting-detail login-detail bor10" >
-            <div class="setSearchNumber">
-              <button type="button">500</button>
-              <input type="hidden" class="bor10 M-box-in" name="searchNumber" value="500">
-              <ul class="option">
-                <li>500</li>
-                <li>600</li>
-                <li>700</li>
-                <li>800</li>
-                <li>900</li>
-                <li>1000</li>
-                <li>무제한</li>
-              </ul>
+            <h2>검색 추출 제한량(개)</h2>
+            <div class="selbox">
+              <div class="setSearchNumber">
+                <button type="button">500</button>
+                <input type="hidden" class="bor10 M-box-in" name="searchNumber" value="500">
+                <ul class="option">
+                  <li>500</li>
+                  <li>600</li>
+                  <li>700</li>
+                  <li>800</li>
+                  <li>900</li>
+                  <li>1000</li>
+                  <li>무제한</li>
+                </ul>
+              </div>
+              <button class="save bor10 btn-off">저장</button>
             </div>
-          <button class="esc">닫기</button>
+          <button type="button" class="esc">닫기</button>
         </div>
       </li>
       <li class="M-box-up bor10 login-btn notice-btn"><a href="./notice.html">알람</a></li>

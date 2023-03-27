@@ -96,11 +96,10 @@
     align-items: end;
     margin-bottom: 20px;
   }
-  h2,
-  .history-list li {
+  .list-tit,.history-list li {
     @extend %flex;
   }
-  h2 {
+  .list-tit {
     color: $blue;
     font-size: 0.9375rem;
     font-weight: 700;

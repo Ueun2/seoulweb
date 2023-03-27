@@ -3,8 +3,7 @@
           box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.6), inset -3px -3px 5px #ffffff, inset 3px 3px 5px rgba(25, 72, 148, 0.32);
 }
 
-#history .trace-history .currently-state, #history h2,
-#history .history-list li, #history .searchbox {
+#history .trace-history .currently-state, #history .list-tit, #history .history-list li, #history .searchbox {
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
@@ -163,14 +162,14 @@
           align-items: end;
   margin-bottom: 20px;
 }
-#history h2 {
+#history .list-tit {
   color: #194894;
   font-size: 0.9375rem;
   font-weight: 700;
   text-align: center;
   padding: 8px 20px;
 }
-#history h2 .dist {
+#history .list-tit .dist {
   width: 11.52%;
 }
 #history .search-history {

@@ -23,9 +23,9 @@ const header = () => {
     <ul class="login">
       <li class="M-box-up bor10 login-btn setting-btn detail-btn">설정
         <div class="setting-detail login-detail bor10" >
-            <h2>검색 추출 제한량(개)</h2>
-            <div class="selbox">
-              <div class="setSearchNumber">
+            <form>
+              <h2>웹 크롤링 뎁스 설정</h2>
+              <div class="selection setSearchNumber">
                 <button type="button">500</button>
                 <input type="hidden" class="bor10 M-box-in" name="searchNumber" value="500">
                 <ul class="option">
@@ -38,8 +38,18 @@ const header = () => {
                   <li>무제한</li>
                 </ul>
               </div>
+              <h2>유사도 가중치 설정</h2>
+              <div class="selection setUnity">
+                <button type="button">80</button>
+                <input type="hidden" class="bor10 M-box-in" name="unity-set" value="80">
+                <ul class="option">
+                  <!-- 하단 스크립트 -->
+                </ul>
+              </div>
+              <h2>자동 추적 키워드</h2>
+              <button type="button" class="bor10 btn-off auto-trace">자동추적 키워드</button>
               <button class="save bor10 btn-off">저장</button>
-            </div>
+            </form>
           <button type="button" class="esc">닫기</button>
         </div>
       </li>

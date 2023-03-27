@@ -34,19 +34,19 @@
         <p class="total-num">총 <span>123</span>건</p>
       </div> -->
       <div class="notice-contents">
-        <form name="notice-list" class="unity-box">
+        <!-- <form name="notice-list" class="unity-box">
           <div class="unity-setting">
             <p>일치율 조건(%)</p>
             <div class="selection setUnity">
               <button type="button">80</button>
               <input type="hidden" class="bor10 M-box-in" name="unity-set" value="80">
               <ul class="option">
-                <!-- 하단 스크립트 -->
+                하단 스크립트
               </ul>
             </div>
           </div>
         </form>
-        <button type="button" class="bor10 btn-off auto-trace">자동추적 키워드</button>
+        <button type="button" class="bor10 btn-off auto-trace">자동추적 키워드</button> -->
         <div class="view-type">
           <button type="button" class="list-btn btn-off">목록형</button>
           <button class="img-btn btn-off">이미지형</button>
@@ -200,24 +200,7 @@
     </script>
   </article>
   <script>
-    // 셀렉트 구현
-    const select = document.querySelector(".selection.setUnity");
-    let ops = '';
-    for (let i = 100; i >= 5; i -= 5) {
-      ops += `<li class='unity_num' value=${i}>${i}</li>`
-    }
-    select.querySelector('.option').innerHTML = ops;
-    const option = document.querySelectorAll(".selection .option li");
-    const tType = document.querySelector('input[name=unity-set]');
-    select.addEventListener("click", (e) => {
-      select.classList.toggle('active');
-      option.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-          select.children[0].innerHTML = e.target.innerText;
-          tType.value = e.target.innerText;
-        })
-      });
-    });
+ 
     // const noticeList = document.querySelector(".notice-list");
     // for (let i = 32; i > 0; i--) {
     //   noticeList.innerHTML += `

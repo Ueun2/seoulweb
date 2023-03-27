@@ -53,9 +53,14 @@ a {
   color: inherit;
 }
 
-.trace-add:active, .del-btn:active, .view-type button:active, .view-type button.active, .login .setting-btn .selbox .save:active, .login .login-btn:active, .selection button:active, .setSearchNumber button:active {
+.trace-add:active, .del-btn:active, .view-type button:active, .view-type button.active, .login .detail-btn .save:active, .login .login-btn:active, .selection button:active, .setSearchNumber button:active {
   -webkit-box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.6), inset -3px -3px 5px #ffffff, inset 3px 3px 5px rgba(25, 72, 148, 0.32);
           box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.6), inset -3px -3px 5px #ffffff, inset 3px 3px 5px rgba(25, 72, 148, 0.32);
+}
+
+.keyword form button:active, .login .setting-btn .login-detail .auto-trace:active {
+  -webkit-box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.6), inset -3px -3px 5px rgba(255, 255, 255, 0.5), inset 3px 3px 5px rgba(25, 72, 148, 0.32);
+          box-shadow: -3px -3px 7px rgba(255, 255, 255, 0.6), inset -3px -3px 5px rgba(255, 255, 255, 0.5), inset 3px 3px 5px rgba(25, 72, 148, 0.32);
 }
 
 .hd-menu li:active, .M-box-in {
@@ -505,32 +510,32 @@ header li a {
   height: 16px;
   background: url(../img/common/esc.png) no-repeat center/80%;
 }
-.login .setting-btn .login-detail {
-  padding: 20px 40px 20px 20px;
+.login .detail-btn .save {
+  color: #194894;
 }
-.login .setting-btn .login-detail .setSearchNumber {
-  width: 100px;
+.login .setting-btn .selection, .login .setting-btn button {
+  width: 100%;
   height: 38px;
 }
-.login .setting-btn .login-detail .setSearchNumber button {
-  background-size: 16px;
+.login .setting-btn .login-detail {
+  padding: 6px 20px 20px;
+  width: 200px;
+}
+.login .setting-btn .login-detail .selection button {
   color: #1B1E20;
+}
+.login .setting-btn .login-detail .auto-trace {
+  margin-bottom: 30px;
+  background-color: rgba(57, 72, 96, 0.4);
+  color: #fff;
+  margin-left: auto;
+  margin-right: 20px;
 }
 .login .setting-btn h2 {
   font-weight: 500;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
   padding-left: 10px;
-}
-.login .setting-btn .selbox {
-  display: -webkit-box;
-  display: -moz-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-.login .setting-btn .selbox .save {
-  width: 50px;
-  margin-left: 10px;
-  color: #194894;
+  margin-top: 20px;
 }
 .login .user-btn {
   display: -webkit-box;
@@ -873,4 +878,150 @@ footer .copy {
   background-image: url(../img/common/add-on.png);
   -webkit-box-shadow: -3px -3px 9px rgba(255, 255, 255, 0.9), inset -2px -2px 3px rgba(255, 255, 255, 0.3), inset 2px 2px 3px rgba(0, 0, 0, 0.24);
           box-shadow: -3px -3px 9px rgba(255, 255, 255, 0.9), inset -2px -2px 3px rgba(255, 255, 255, 0.3), inset 2px 2px 3px rgba(0, 0, 0, 0.24);
+}
+.keyword {
+  background: #F2F2F8;
+  border-width: 3px 0 0 3px;
+  border-color: #fff;
+  border-style: solid;
+  -webkit-box-shadow: 6px 6px 12px rgba(25, 72, 148, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.2);
+          box-shadow: 6px 6px 12px rgba(25, 72, 148, 0.5), -2px -2px 4px rgba(255, 255, 255, 0.2);
+  position: relative;
+  margin: 0 auto;
+  width: 680px;
+  padding: 27px 30px 30px 27px;
+}
+.keyword::-webkit-scrollbar {
+  width: 14px;
+}
+.keyword::-webkit-scrollbar-thumb {
+  background-color: #194894;
+  border-radius: 10px;
+  border: 6px solid #F2F2F8;
+}
+.keyword .title {
+  color: #194894;
+  margin-top: 0;
+}
+.keyword form {
+  margin: 30px 0 20px;
+}
+.keyword form input, .keyword form button {
+  height: 40px;
+  padding: 0 20px;
+}
+.keyword form button {
+  margin-left: 10px;
+  color: #fff;
+  background-color: rgba(57, 72, 96, 0.4);
+}
+.keyword form button:active {
+  font-weight: 500;
+}
+.keyword .keyword-box {
+  padding: 10px;
+  margin-bottom: 40px;
+}
+.keyword .keyword-box > div {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+     -moz-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  -webkit-box-align: start;
+     -moz-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  -ms-flex-line-pack: start;
+      align-content: start;
+  overflow-y: scroll;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  color: #1B1E20;
+  height: 10vh;
+}
+.keyword .keyword-box .word-list {
+  border-radius: 4px 4px 4px 4px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+     -moz-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 5px;
+  font-size: 0.875rem;
+  padding: 4px 4px 4px 8px;
+  background-color: rgba(57, 72, 96, 0.1);
+}
+.keyword .keyword-box .word-list span {
+  cursor: pointer;
+  font-size: 0;
+  width: 14px;
+  height: 14px;
+  background: url(../img/common/delet.png) no-repeat center/10px;
+  margin-left: 4px;
+}
+.keyword .neologism-title {
+  color: #E87728;
+  margin-bottom: 20px;
+}
+.keyword .neologism {
+  margin-top: 15px;
+  padding: 10px 10px 20px;
+}
+.keyword .neologism .tit, .keyword .neologism .list-con p {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  text-align: center;
+}
+.keyword .neologism .tit {
+  color: #194894;
+  font-weight: 700;
+  padding: 0 14px;
+  font-size: 0.9375rem;
+  margin-bottom: 4px;
+}
+.keyword .neologism .list-con {
+  padding: 14px;
+}
+.keyword .neologism .list-con > div {
+  height: 208px;
+  overflow-y: scroll;
+}
+.keyword .neologism .list-con p {
+  border-radius: 4px 4px 4px 4px;
+  padding: 6px 0;
+}
+.keyword .neologism .list-con p:nth-of-type(2n-1) {
+  background-color: rgba(25, 72, 148, 0.04);
+}
+.keyword .neologism .num {
+  -webkit-box-flex: 1;
+     -moz-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+.keyword .neologism .word {
+  -webkit-box-flex: 5;
+     -moz-box-flex: 5;
+      -ms-flex: 5;
+          flex: 5;
+}
+.keyword .neologism .count {
+  -webkit-box-flex: 3;
+     -moz-box-flex: 3;
+      -ms-flex: 3;
+          flex: 3;
+}
+.keyword .esc-btn {
+  position: absolute;
+  right: 10px;
+  top: 7px;
 }/*# sourceMappingURL=common.css.map */
